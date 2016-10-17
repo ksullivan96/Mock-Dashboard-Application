@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.bundle.js" type="text/javascript"></script>
+    <script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
+    
+    <meta charset="UTF-8">
+    <title>Application Dashboard</title>
+</head>
+<body>
+    
+    <div class="container">
+        <header class="main-header">
+            
+            <h1>Web App</h1>
+            <div class="user-info">
+                <ul id='user'>
+                    <li class='alert-icon'><img src="images/icons/icon-bell.svg" alt="alert"></li>
+                    <li><img src="https://s3.amazonaws.com/uifaces/faces/twitter/jina/48.jpg" alt="Jina"></li>
+                    <li><a href="#" class="user-click">Jina</a></li>
+                </ul>    
+            </div>
+            <div class="user-nav">
+                <ul>
+                    <li>Jina Xiao</li>
+                    <li>View Profile</li>
+                    <li>Settings</li>
+                    <li>Sign Out</li>
+                </ul>
+            </div>
+        </header>
+    
+        <div class="app-nav">
+            
+            <ul>
+                <li class="active"><a href="index.html" ><img src="images/icons/icon-dashboard.svg" alt="dashboard-icon"  /></a></li>
+                <li><a href="#"><img src="images/icons/icon-members.svg" alt="members" /></a></li>
+                <li><a href="#"><img src="images/icons/icon-visits.svg" alt="visits"/></a></li>
+                <li><a href="#"><img src="images/icons/icon-settings.svg" alt="settings" /></a></li>
+            </ul>
+        
+        </div>
+        
+        <div class="dashboard">
+            <div class="alert">
+                <h3>Alert</h3><span> Id aliquam feugait epicuri sea, cum veniam graeci eu, eu amet gubergren his. Dicat vocibus recusabo mei ad.</span>
+                <span class="close">x</span>
+            </div>
+            
+            <div class="traffic col">
+                <h2>Traffic</h2>
+                <ul>
+                    <li>Hourly</li>
+                    <li>Daily</li>
+                    <li>Weekly</li>
+                    <li>Monthly</li>
+                </ul>
+                <canvas id="traffic-chart"></canvas>
+                <script>
+                    var ctx = document.getElementById("traffic-chart");
+                    var myChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ["16-22", "23-29", "30-5", "6-12", "13-19", "20-26", "27-3", "4-10", "11-17", "18-24", "25-31"],
+                        datasets: [{
+                            data: [750, 1250, 1000, 1500, 2000, 1500, 1750, 1250, 1750, 2000, 2250],
+                            backgroundColor: [
+                                'rgba(58, 107, 103, 0.3)'
+                            ],
+                            borderColor: [
+                                'rgba(58, 107, 103, 0.7)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        legend: {
+                            display: false
+                        },
+                        
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    min: 500,
+                                    max: 2500,
+                                    stepSize: 500
+                                }
+                            }]
+                        }
+                    }
+                });
+                </script>
+            </div>
+            
+            <div class="border"></div>
+            
+                <div class="daily-traffic col-2 col-graphs">
+                    <h2>Daily Traffic</h2>
+                    <canvas id="daily-traffic-chart"></canvas>
+                    <script>
+                        var ctx = document.getElementById("daily-traffic-chart");
+                        var myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: ["S", "M", "T", "W", "T", "F", "S"],
+                            datasets: [{
+                                data: [75, 125, 175, 150, 225, 200, 165,],
+                                backgroundColor: 'rgba(58, 107, 103, 0.9)'
+
+                            }]
+                        },
+                        options: {
+                            legend: {
+                                display: false
+                            },
+
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        min: 50,
+                                        max: 250,
+                                        stepSize: 50
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                    </script>
+                </div>
+
+                <div class="mobile-users col-2 col-graphs">
+                    <h2>Mobile Users</h2>
+                    <canvas id="mobile-users-chart"></canvas>
+                    <script>
+                        var ctx = document.getElementById("mobile-users-chart");
+                        var myChart = new Chart(ctx, {
+                        type: 'doughnut',
+                        data: {
+                            labels: ["Phones", "Tablets", "Desktop"],
+
+                            datasets: [{
+                                data: [30, 25, 45],
+                                backgroundColor: [
+                                    'rgba(58, 107, 103, 0.9)',
+                                    'rgba(107, 79, 58, 1)',
+                                    'rgba(107, 58, 87, 1)'
+                                ]
+
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            
+                        }
+                    });
+                    </script>
+                </div>
+            
+            
+            <div class="border"></div>
+            <div class="social-stats col">
+                <h2>Social Stats</h2>
+                <div class="social-media">
+                    <div class="social-media-stats twitter">
+                        <img src="images/icons/twitter.svg" alt="twitter" />
+                        <ul>
+                            <li>Twitter</li>
+                            <li>10,345</li>
+                        </ul>
+                    </div>
+
+                    <div class="social-media-stats facebook">
+                        <img src="images/icons/facebook.svg" alt="facebook" />
+                        <ul>
+                            <li>Facebook</li>
+                            <li>8,739</li>
+                        </ul>
+                    </div>
+
+                    <div class="social-media-stats googleplus">
+                        <img src="images/icons/googleplus.svg" alt="Google Plus" />
+                        <ul>
+                            <li>Google+</li>
+                            <li>2,530</li>
+                        </ul>
+                    </div>
+                </div>    
+                
+            </div>
+
+            <div class="border"></div>
+            <div class="row">
+                <div class="new-members col-2">
+                    <h2>New Members</h2>
+
+                    <div class="new-members-info">
+                        <img src="https://s3.amazonaws.com/uifaces/faces/twitter/vladzima/48.jpg" alt="Vladimir Zima" />
+                        <ul>
+                            <li>Vladimir Zima</li>
+                            <li>vladimirzima@example.com</li>
+                        </ul>
+                        <p>07/11/2014</p>
+                    </div>
+
+                    <div class="new-members-info">
+                        <img src="https://s3.amazonaws.com/uifaces/faces/twitter/adellecharles/48.jpg" alt="Adelle Charles" />
+                        <ul>
+                            <li>Adelle Charles</li>
+                            <li>adellecharles@example.com</li>
+                        </ul>
+                        <p>07/11/2014</p>
+                    </div>
+                    <div class="new-members-info">
+                        <img src="https://s3.amazonaws.com/uifaces/faces/twitter/jina/48.jpg" alt="Jina Xiao" />
+                        <ul>
+                            <li>Jina Xiao</li>
+                            <li>jinaxiao@example.com</li>
+                        </ul>
+                        <p>07/11/2014</p>
+                    </div>
+                    <div class="new-members-info">
+                        <img src="https://s3.amazonaws.com/uifaces/faces/twitter/davidburlton/48.jpg" alt="David Burton" />
+                        <ul>
+                            <li>David Burton</li>
+                            <li>davidburton@example.com</li>
+                        </ul>
+                        <p>07/11/2014</p>
+                    </div>
+                
+                </div>
+                <div class="recent col-2">
+                    <h2>Recent Acitivity</h2>
+                    <div class="new-members-info">
+                        <img src="https://s3.amazonaws.com/uifaces/faces/twitter/vladzima/48.jpg" alt="Vladimir Zima" />
+                        <ul>
+                            <li>Vladimir Zima Commented on WebApp's SEO tips</li>
+                            <li>4 Hours ago</li>
+                        </ul>
+                        <p><a href="#">></a></p>
+                    </div>
+
+                    <div class="new-members-info">
+                        <img src="https://s3.amazonaws.com/uifaces/faces/twitter/adellecharles/48.jpg" alt="Adelle Charles" />
+                        <ul>
+                            <li>Adelle Charles likes the post Facebook.</li>
+                            <li>5 Hours ago</li>
+                        </ul>
+                        <p><a href="#">></a></p>
+                    </div>
+                    <div class="new-members-info">
+                        <img src="https://s3.amazonaws.com/uifaces/faces/twitter/jina/48.jpg" alt="Jina Xiao" />
+                        <ul>
+                            <li>Jina Xiao commented on Facebook.</li>
+                            <li>2 days ago</li>
+                        </ul>
+                        <p><a href="#">></a></p>
+                    </div>
+                    <div class="new-members-info">
+                        <img src="https://s3.amazonaws.com/uifaces/faces/twitter/davidburlton/48.jpg" alt="David Burton" />
+                        <ul>
+                            <li>David Burton posted WebApp's SEO Tips</li>
+                            <li>2 days ago</li>
+                        </ul>
+                        <p><a href="#">></a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="border"></div>
+            <div class="row">
+            <div class="message col-2">
+                
+                <h2>Message Users</h2>
+                <form>
+                    <input type="text" id="user-name" placeholder="Search for User" />
+                    <textarea id="message" placeholder = "Message for User"></textarea>
+                    <button class="send use">send</button>
+                </form>
+            </div>
+            
+            <div class="settings col-2">
+                <h2>Settings</h2>
+                
+                <div id="settings">
+                        <label class="new-check" for="public-profile">
+                        <span>Send Notifications to Email</span>
+                        <label class="switch">
+                            <input type="checkbox" id="public-profile">
+                            <div class="slider round"></div>
+                        </label>
+                    </label>
+                    
+                    <label class="new-check" for="public-profile">
+                        <span>Set Profile to Public</span>
+                        <label class="switch">
+                            <input type="checkbox" id="public-profile">
+                            <div class="slider round"></div>
+                        </label>
+                    </label>
+                    
+                        
+                        <select>
+                            <option value="choose" disabled selected class="italic">Please select a Timezone</option>
+                            <option>Eastern</option>
+                            <option>Central</option>
+                            <option>Mountain</option>
+                            <option>Pacific</option>
+                        </select>    
+                    
+                        <div class="buttons">
+                            <button class="save use">save</button>
+                            <button class="cancel">cancel</button>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+        </div>
+            
+    </div>
+<script src="js/app.js" type="text/javascript"></script>
+</body>
+</html>
